@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_24_111815) do
+ActiveRecord::Schema.define(version: 2021_07_24_150215) do
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "post_images", force: :cascade do |t|
     t.text "shop_name"
