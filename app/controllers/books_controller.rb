@@ -1,11 +1,14 @@
 class BooksController < ApplicationController
 
     def show
-      @book = Book.new
+      @newbook = Book.new
+      @book = Book.find(params[:id])
+      @user = @book.user
     end
 
     def create
       book = Book.new(book_params)
+      book.user_id = current_user.id
       book.save
       redirect_to book_path(book.id)
     end
@@ -15,9 +18,17 @@ class BooksController < ApplicationController
       @user = User.find(current_user.id)
     end
 
+    def destroy
+    @book = Book.find(params[:id])
+    if @book.destroy
+      flash[:notice]="Book was successfully destroyed."
+      redirect_to books_path
+    end
+    end
+
     private
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :user_id)
   end
 
 end
