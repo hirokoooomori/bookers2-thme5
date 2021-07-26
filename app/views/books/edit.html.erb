@@ -13,11 +13,9 @@
             <%= f.submit 'Update Book', :class => 'btn btn-success' %>
             <h5></h5>
           <% end %>
-            <%= link_to "Show", book_path(@book) %>|
-            <%= link_to "Back", %>
+          <%= link_to "Show", book_path(@book) %>|
+          <%= link_to "Back", books_path(@book) %>
     	</div>
-  		<a class="book_7260" href="/books/7260">Show</a> |
-  		<a class="back" href="/books">Back</a>
     </div>
   </div>
 </main>
