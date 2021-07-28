@@ -1,6 +1,6 @@
 <main>
   <% if @book.errors.any? %>
-    <%= @book.errors.count %>件のエラーが発生しました
+    <%= @book.errors.count %>errors prohibited this obj from being saved:
     <% @book.errors.full_messages.each do |message| %>
     <%= message %>
     <% end %>
@@ -11,16 +11,16 @@
       <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		  <h1>Editing Book</h1>
           <%= form_with model:@book, local: true do |f| %>
-            <h5>Title</h5>
+            <%= f.label:title %>
             <%= f.text_field :title, :class => 'form-control book_title' %>
-            <h5>Opinion</h5>
+            <%= f.label:opinion %>
             <%= f.text_field :body, :class => 'form-control book_body' %>
             <h5></h5>
             <%= f.submit 'Update Book', :class => 'btn btn-success' %>
             <h5></h5>
           <% end %>
           <%= link_to "Show", book_path(@book) %>|
-          <%= link_to "Back", books_path(@book) %>
+          <%= link_to "Back", books_path %>
     	</div>
     </div>
   </div>
