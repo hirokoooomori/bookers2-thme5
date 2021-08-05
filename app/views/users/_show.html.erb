@@ -8,6 +8,27 @@
   <th>introduction</th>
 	<th><%= user.introduction %></th>
 </tr>
+<tr>
+  <th>follows</th>
+  <% user ||= current_user %>
+  <th>
+    <strong id="following" class="stat">
+      <%= link_to user_followings_path(current_user)do %>
+       <%= user.followings.count %>
+      <% end %>
+    </strong>
+  </th>
+</tr>
+<tr>
+  <th>followers</th>
+  <th>
+    <strong id="followers" class="stat">
+      <%= link_to user_followers_path(current_user) do %>
+        <%= user.followers.count %>
+      <% end %>
+    </strong>
+  </th>
+</tr>
 </table>
 <div class='row'>
   <%= link_to "", edit_user_path(user.id), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
