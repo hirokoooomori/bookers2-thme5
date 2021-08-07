@@ -1,22 +1,39 @@
 class SearchesController < ApplicationController
 
   def search
-    @model = params["search"]["model"]
+    @model = params["search"]["model"]#選択したmodelを@modelに代入
     @value = params["search"]["value"]
-    @how = params["search"]["how"]
-    @datas = search_for(@how, @model, @value)
+    @how = params["search"]["how"]#洗濯した検索方法howを@howに代入
+    @datas = search_for(@how, @model, @value)#search_forの引数にインスタンス変数を定義
+  　#@datasは最終的な検索結果
   end
 
   private
 
-  def match(model, value)
-    if model == 'user'
-      User.where(name: value)
+  def match(model, value)#def search_forでhowがmatchだった場合の処理
+    if model == 'user'#modelがuserの場合の処理
+      User.where(name: value)#whereでvalueと完全一致するnameを探す
     elsif model == 'book'
       Book.where(title: value)
     end
   end
 
+
+  def forward(model, value)
+    if model == 'user'
+      User.where("name LIKE ?", "#{value}%")
+    elsif model == 'book'
+      Book.where("title LIKE ?", "#{value}%")
+    end
+  end
+
+  def backward(model, value)
+    if model == 'user'
+      User.where("name LIKE ?", "%#{value}")
+    elsif model == 'book'
+      Book.where("title LIKE ?", "%#{value}")
+    end
+  end
 
   def partical(model, value)
     if model == 'user'
@@ -26,11 +43,11 @@ class SearchesController < ApplicationController
     end
   end
 
-  def search_for(how, model, value)
-    case how
+  def search_for(how, model, value)#searchアクションで定義した情報が引数に入っている
+    case how#検索方法のhowの中身がどれなのかwhenの条件分岐の中から探す
     when 'match'
-      match(model, value)
-    when 'forward'
+      match(model, value)#検索方法の引数に(model, value)を定義している
+    when 'forward'#例えばhowがmatchの場合は def match の処理に進む
       forward(model, value)
     when 'backward'
       backward(model, value)

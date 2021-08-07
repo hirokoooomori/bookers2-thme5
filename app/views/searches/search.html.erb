@@ -1,7 +1,9 @@
 <div class="container">
   <div class="col-xs-12">
     <% if @model == "user" %>
+    <%# @model = params["search"]["model"] %>
     <h2>Users search for '<%= @value %>'</h2>
+    <%# @value = params["search"]["value"] %>
     <table class="table">
         <thead>
             <tr>
@@ -11,6 +13,8 @@
             </tr>
         </thead>
     <% @datas.each do |user| %>
+    <%# userの検索結果@datasをeachで取り出す %>
+    <%# @datas = search_for(@how, @model, @value %>
         <tbody>
             <tr>
                 <th>
@@ -35,6 +39,7 @@
                 <th>Opinion</th>
             </tr>
         </thead>
+        
         <% @datas.each do |book| %>
         <tbody>
             <tr>

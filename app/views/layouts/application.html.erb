@@ -59,15 +59,22 @@
 
         </div>
       </nav>
-        <div style="text-align: center">
-          <% if user_signed_in? %>
-            <%= form_with url:searchs_path, method: :get, local: true do |f| %>
-            <%= f.text_field 'search[value]' %>
-            <%= f.select 'search[model]', options_for_select({ "User" => "user", "Book" => "book" }) %>
-            <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "部分一致" => "partical"  }) %>
-            <%= f.submit :"検索" %>
-            <% end %>
-          <% end %>
+
+      </div>
+      <div style="text-align: center">
+        <%# サインインしているユーザーか判断 %>
+        <% if user_signed_in? %>
+        <%= form_with url:searchs_path, method: :get, local: true do |f| %>
+        　<%# １行のテキスト投稿フォーム %>
+          <%= f.text_field 'search[value]' %>
+          <%# 頭文字を小文字に %>
+          <%= f.select 'search[model]', options_for_select({ "User" => "user", "Book" => "book" }) %>
+          <%#  %>
+          <%= f.select 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
+          <%# 送信ボタン %>
+          <%= f.submit :"検索" %>
+        <% end %>
+        <% end %>
       </div>
     </header>
 

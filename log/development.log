@@ -10092,3 +10092,696 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 64ms (Views: 59.7ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/users/1" for 111.239.164.154 at 2021-08-07 09:18:30 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_show.html.erb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  ↳ app/views/users/_show.html.erb:27
+  Rendered users/_show.html.erb (23.5ms)
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/users/show.html.erb:47
+  Rendered users/show.html.erb within layouts/application (52.9ms)
+Completed 200 OK in 506ms (Views: 452.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=user&search%5Bhow%5D=backward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:18:39 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"user", "how"=>"backward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 0.1ms)
+
+
+  
+NoMethodError (undefined method `backward' for #<SearchesController:0x00007fed913795e8>):
+  
+app/controllers/searches_controller.rb:38:in `search_for'
+app/controllers/searches_controller.rb:7:in `search'
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:19:10 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 175ms (ActiveRecord: 0.1ms)
+
+
+  
+NoMethodError (undefined method `forward' for #<SearchesController:0x00007fed91391c88>):
+  
+app/controllers/searches_controller.rb:36:in `search_for'
+app/controllers/searches_controller.rb:7:in `search'
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=hiroko&search%5Bmodel%5D=user&search%5Bhow%5D=match&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:19:20 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"hiroko", "model"=>"user", "how"=>"match"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ?[0m  [["name", "hiroko"]]
+  ↳ app/views/searches/search.html.erb:13
+  Rendered searches/search.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 102ms (Views: 98.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=o&search%5Bmodel%5D=user&search%5Bhow%5D=backward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:19:40 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"o", "model"=>"user", "how"=>"backward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 0.1ms)
+
+
+  
+NoMethodError (undefined method `backward' for #<SearchesController:0x00007fed7c582b88>):
+  
+app/controllers/searches_controller.rb:38:in `search_for'
+app/controllers/searches_controller.rb:7:in `search'
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=hiroko&search%5Bmodel%5D=user&search%5Bhow%5D=match&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:20:43 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"hiroko", "model"=>"user", "how"=>"match"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ?[0m  [["name", "hiroko"]]
+  ↳ app/views/searches/search.html.erb:13
+  Rendered searches/search.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 421ms (Views: 402.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:20:50 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  Rendered searches/search.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:                 <th>Introduction</th>
+    11:             </tr>
+    12:         </thead>
+    13:     <% @datas.each do |user| %>
+    14:         <tbody>
+    15:             <tr>
+    16:                 <th>
+  
+app/views/searches/search.html.erb:13:in `_app_views_searches_search_html_erb__914031913553379563_70342504742500'
+Started GET "/" for 111.239.164.154 at 2021-08-07 09:22:06 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 371ms (Views: 363.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 111.239.164.154 at 2021-08-07 09:22:08 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 118ms (Views: 115.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_in" for 111.239.164.154 at 2021-08-07 09:22:13 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://7f6ce9f8b98442539f84d75041c0872e.vfs.cloud9.us-east-1.amazonaws.com/users/1
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 8ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1" for 111.239.164.154 at 2021-08-07 09:22:14 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_show.html.erb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  ↳ app/views/users/_show.html.erb:27
+  Rendered users/_show.html.erb (20.0ms)
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/users/show.html.erb:47
+  Rendered users/show.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 145ms (Views: 117.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:22:43 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  Rendered searches/search.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:                 <th>Introduction</th>
+    11:             </tr>
+    12:         </thead>
+    13:     <% @datas.each do |user| %>
+    14:         <tbody>
+    15:             <tr>
+    16:                 <th>
+  
+app/views/searches/search.html.erb:13:in `_app_views_searches_search_html_erb___4429829707198437192_70158569100200'
+Started GET "/users/1" for 111.239.164.154 at 2021-08-07 09:26:26 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_show.html.erb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  ↳ app/views/users/_show.html.erb:27
+  Rendered users/_show.html.erb (4.3ms)
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/users/show.html.erb:47
+  Rendered users/show.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 62ms (Views: 57.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=match&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:26:37 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"match"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."title" = ?[0m  [["title", "d"]]
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 78ms (Views: 74.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:26:42 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE 'd%')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 58ms (Views: 54.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=backward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:26:51 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"backward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE '%d')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 56ms (Views: 53.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:27:00 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  Rendered searches/search.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:                 <th>Introduction</th>
+    11:             </tr>
+    12:         </thead>
+    13:     <% @datas.each do |user| %>
+    14:         <tbody>
+    15:             <tr>
+    16:                 <th>
+  
+app/views/searches/search.html.erb:13:in `_app_views_searches_search_html_erb___4429829707198437192_70158579662240'
+Started GET "/users/1" for 111.239.164.154 at 2021-08-07 09:30:15 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_show.html.erb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  ↳ app/views/users/_show.html.erb:27
+  Rendered users/_show.html.erb (4.5ms)
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/users/show.html.erb:47
+  Rendered users/show.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 86ms (Views: 81.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=partical&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:30:22 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"partical"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE '%d%')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 56ms (Views: 52.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=backward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:30:37 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"backward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE '%d')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 56ms (Views: 52.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:30:48 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE 'd%')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 66ms (Views: 62.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=match&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:30:57 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"match"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."title" = ?[0m  [["title", "d"]]
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 77ms (Views: 74.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 111.239.164.154 at 2021-08-07 09:31:00 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:31
+Completed 200 OK in 53ms (Views: 52.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/sign_in" for 111.239.164.154 at 2021-08-07 09:31:08 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://7f6ce9f8b98442539f84d75041c0872e.vfs.cloud9.us-east-1.amazonaws.com/users/1
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1" for 111.239.164.154 at 2021-08-07 09:31:08 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_show.html.erb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  ↳ app/views/users/_show.html.erb:27
+  Rendered users/_show.html.erb (4.5ms)
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/users/show.html.erb:47
+  Rendered users/show.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 63ms (Views: 58.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:31:15 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE 'd%')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 56ms (Views: 52.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=user&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:31:25 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"user", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  Rendered searches/search.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:                 <th>Introduction</th>
+    11:             </tr>
+    12:         </thead>
+    13:     <% @datas.each do |user| %>
+    14:         <tbody>
+    15:             <tr>
+    16:                 <th>
+  
+app/views/searches/search.html.erb:13:in `_app_views_searches_search_html_erb___4429829707198437192_70158580296520'
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:42:45 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE 'd%')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (26.6ms)
+Completed 200 OK in 596ms (Views: 561.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=match&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:43:10 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"match"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ?[0m  [["name", "h"]]
+  ↳ app/views/searches/search.html.erb:13
+  Rendered searches/search.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 85ms (Views: 80.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=partical&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:43:15 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"partical"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name LIKE '%h%')[0m
+  ↳ app/views/searches/search.html.erb:13
+  Rendered searches/search.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 106ms (Views: 102.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:43:20 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  Rendered searches/search.html.erb within layouts/application (12.1ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:                 <th>Introduction</th>
+    11:             </tr>
+    12:         </thead>
+    13:     <% @datas.each do |user| %>
+    14:         <tbody>
+    15:             <tr>
+    16:                 <th>
+  
+app/views/searches/search.html.erb:13:in `_app_views_searches_search_html_erb__3517273187832534528_44990880'
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:49:27 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE 'd%')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 583ms (Views: 557.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:49:36 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name LIKE 'h%')[0m
+  ↳ app/views/searches/search.html.erb:13
+  Rendered searches/search.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 107ms (Views: 102.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=o&search%5Bmodel%5D=user&search%5Bhow%5D=backward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:49:48 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"o", "model"=>"user", "how"=>"backward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name LIKE '%o')[0m
+  ↳ app/views/searches/search.html.erb:13
+  Rendered searches/search.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 83ms (Views: 79.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=forward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:49:59 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"forward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE 'd%')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 109ms (Views: 105.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=d&search%5Bmodel%5D=book&search%5Bhow%5D=backward&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:50:06 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"d", "model"=>"book", "how"=>"backward"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE (title LIKE '%d')[0m
+  ↳ app/views/searches/search.html.erb:38
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/searches/search.html.erb:42
+  Rendered searches/search.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 99ms (Views: 93.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/searchs?utf8=%E2%9C%93&search%5Bvalue%5D=h&search%5Bmodel%5D=user&search%5Bhow%5D=match&commit=%E6%A4%9C%E7%B4%A2" for 111.239.164.154 at 2021-08-07 09:50:18 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by SearchesController#search as HTML
+  Parameters: {"utf8"=>"✓", "search"=>{"value"=>"h", "model"=>"user", "how"=>"match"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  Rendering searches/search.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = ?[0m  [["name", "h"]]
+  ↳ app/views/searches/search.html.erb:13
+  Rendered searches/search.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 79ms (Views: 75.7ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 111.239.164.154 at 2021-08-07 09:51:02 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rJkkwRKzuLz4ZrG9LJMwun1Nic8b0WQNT6CK6HiOOGGtVIVRvAFiG5gSOW+pFfvTWLAph8OB5cwjjPHkdeS9Dg=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://7f6ce9f8b98442539f84d75041c0872e.vfs.cloud9.us-east-1.amazonaws.com/
+Completed 302 Found in 27ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 111.239.164.154 at 2021-08-07 09:51:02 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 90ms (Views: 88.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 111.239.164.154 at 2021-08-07 09:51:30 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 84ms (Views: 82.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home/about" for 111.239.164.154 at 2021-08-07 09:51:31 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#about as HTML
+  Rendering homes/about.html.erb within layouts/application
+  Rendered homes/about.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 75ms (Views: 72.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 111.239.164.154 at 2021-08-07 09:51:33 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.4ms)
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 101ms (Views: 100.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 111.239.164.154 at 2021-08-07 09:51:35 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomesController#top as HTML
+  Rendering homes/top.html.erb within layouts/application
+  Rendered homes/top.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 75ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 111.239.164.154 at 2021-08-07 09:51:37 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 83ms (Views: 82.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 111.239.164.154 at 2021-08-07 09:51:41 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BWL9kLN42B3Am0lJ3y2IbhZMoYPZ20LV9A5FHfOqCUOnnjjc4KzDqRXwM0Hnrzkvy0JMjAmnxQjcQ/xK4u6Prg==", "user"=>{"name"=>"hiroko", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["name", "hiroko"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 292ms (ActiveRecord: 0.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BWL9kLN42B3Am0lJ3y2IbhZMoYPZ20LV9A5FHfOqCUOnnjjc4KzDqRXwM0Hnrzkvy0JMjAmnxQjcQ/xK4u6Prg==", "user"=>{"name"=>"hiroko", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 434ms (Views: 100.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 111.239.164.154 at 2021-08-07 09:51:50 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wT2DM+9Emax9urtVSFZn3oShwZmS8BcUgIKwxY+EgvGqHA9Pk5+UrJC/swztweFdiEhGhFBkTQO0m3h3qqHXjw==", "user"=>{"name"=>"hiroko", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["name", "hiroko"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://7f6ce9f8b98442539f84d75041c0872e.vfs.cloud9.us-east-1.amazonaws.com/users/1
+Completed 302 Found in 294ms (ActiveRecord: 0.1ms)
+
+
+Started GET "/users/1" for 111.239.164.154 at 2021-08-07 09:51:50 +0000
+Cannot render console from 111.239.164.154! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  ↳ app/views/users/_show.html.erb:17
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 1]]
+  ↳ app/views/users/_show.html.erb:27
+  Rendered users/_show.html.erb (19.4ms)
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/users/show.html.erb:47
+  Rendered users/show.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 119ms (Views: 105.9ms | ActiveRecord: 0.9ms)
+
+
